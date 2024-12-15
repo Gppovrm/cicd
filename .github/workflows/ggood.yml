@@ -9,22 +9,6 @@ on:
       - master
 
 jobs:
-  lint:
-    name: linting_job
-    runs-on: ubuntu-20.04
-
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-
-    - name: Set up Python 3.9
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.9'
-
-    - name: Lint code
-      run: pylint hello.py
-
   build:
     name: build_job
     runs-on: ubuntu-20.04
