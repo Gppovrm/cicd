@@ -11,13 +11,13 @@ on:
 jobs:
   build:
     name: Build Job
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Set up Python
+    - name: Set up Python 3.9
       uses: actions/setup-python@v4
       with:
         python-version: '3.9'
@@ -35,12 +35,12 @@ jobs:
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-    - name: Run Hello World script
+    - name: Run simple Hello World script
       run: python hello.py
 
   test:
     name: Test Job
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     needs: build
 
     steps:
@@ -54,3 +54,20 @@ jobs:
 
     - name: Run tests
       run: python -m unittest discover
+
+  deploy:
+    name: Deploy Job
+    runs-on: ubuntu-20.04
+    needs: test
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+
+    - name: Deploy Application
+      run: echo "Deploying application..."
