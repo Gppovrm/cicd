@@ -1,7 +1,5 @@
-print("Hello, World!")
+def greet(name):
+    return f"Hello, {name}!"
 
-print("Hello, World!")
-
-print("Hello, World!")
-
-print("Hello, World!")
+if __name__ == "__main__":
+    print(greet("World"))
