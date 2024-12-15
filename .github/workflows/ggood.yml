@@ -12,7 +12,6 @@ jobs:
   build:
     name: build_job
     runs-on: ubuntu-20.04
-    needs: lint
 
     steps:
     - name: Checkout repository
